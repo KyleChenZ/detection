@@ -1,6 +1,9 @@
 let http = require('http');
 let fs = require('fs');
  
+ 
+var port = process.env.PORT || 8000;
+
 let handleRequest = (request, response) => {
     response.writeHead(200, {
         'Content-Type': 'text/html'
@@ -16,4 +19,4 @@ let handleRequest = (request, response) => {
     });
 };
 
-http.createServer(handleRequest).listen(8000);
+http.createServer(handleRequest).listen(port);
