@@ -8,12 +8,16 @@
   crossorigin="anonymous"></script>
   
   <title>JS Bin</title>
+  
 <form id="ajax-upload" action="http://35.184.60.219/applyMask" method="post" enctype="multipart/form-data" multiple>
     Select image to upload:
     <input type="file" name="image" id='image'>
     <input type="submit" value="submit"/> 
 </form>
-  
+   <h4>Json Output:</h4>
+   <pre id="output" style= 
+        "color:black; font-size: 20px; font-weight: bold;"> 
+    </pre> 
   <script>
 $(document).ready(function () {
 $('#ajax-upload').on('submit', function(e){  //form id="ajax-upload"
@@ -28,7 +32,11 @@ $('#ajax-upload').on('submit', function(e){  //form id="ajax-upload"
           data: data,
           processData: false,
           success: function(res){
-            console.log(res)
+            console.log(res);
+			console.log(JSON.stringify(res, null, 4));
+			var outputDiv = document.getElementById("output"); 
+			outputDiv.innerHTML = JSON.stringify(res, null, 4);
+			//$('#output').innerHTML(JSON.stringify(res, null, 4));
           },
           error: function(res){
             console.log(res)
